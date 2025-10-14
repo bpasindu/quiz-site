@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz</title>
+    <link rel="stylesheet" href="./quiz.css" />
+  </head>
+  <body>
+    <nav>
+      <img src="./assets/qanda.png" class="qna-img" />
+      <h3 id="userName1"></h3>
+    </nav>
+
+    <main>
+      <div class="quiz-card">
+        <h2 id="questionNumber">Questions 1/5</h2>
+        <div class="question">
+          <h1 id="question"></h1>
+          <div class="answer" id="answer-buttons">
+            <div class="answer-option">
+              <input type="radio" id="ans1" name="question" value="1" />
+              <label for="ans1">Hyper Text Markup Language</label>
+            </div>
+            <div class="answer-option">
+              <input type="radio" id="ans2" name="question" value="2" checked />
+              <label for="ans2">Hyper Text Preprocessor</label>
+            </div>
+            <div class="answer-option">
+              <input type="radio" id="ans3" name="question" value="3" />
+              <label for="ans3">Hyper Text Multiple Language</label>
+            </div>
+            <div class="answer-option">
+              <input type="radio" id="ans4" name="question" value="4" />
+              <label for="ans4">Hyper Tool Multi Language</label>
+            </div>
+          </div>
+        </div>
+        <div class="next-btn">Next</div>
+      </div>
+    </main>
+
+
+    <script src="index2.js"></script>
+  </body>
+</html>
