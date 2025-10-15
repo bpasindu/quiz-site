@@ -13,30 +13,31 @@
     </nav>
 
     <main>
+      <div class="timer" id="timer">00:20</div>
       <div class="quiz-card">
         <h2 id="questionNumber">Questions 1/5</h2>
         <div class="question">
-          <h1 id="question"></h1>
+          <h1 id="question-i"></h1>
           <div class="answer" id="answer-buttons">
             <div class="answer-option">
               <input type="radio" id="ans1" name="question" value="1" />
-              <label for="ans1">Hyper Text Markup Language</label>
+              <label for="ans1" id="label1">Hyper Text Markup Language</label>
             </div>
             <div class="answer-option">
-              <input type="radio" id="ans2" name="question" value="2" checked />
-              <label for="ans2">Hyper Text Preprocessor</label>
+              <input type="radio" id="ans2" name="question" value="2" />
+              <label for="ans2" id="label2">Hyper Text Preprocessor</label>
             </div>
             <div class="answer-option">
               <input type="radio" id="ans3" name="question" value="3" />
-              <label for="ans3">Hyper Text Multiple Language</label>
+              <label for="ans3" id="label3">Hyper Text Multiple Language</label>
             </div>
             <div class="answer-option">
               <input type="radio" id="ans4" name="question" value="4" />
-              <label for="ans4">Hyper Tool Multi Language</label>
+              <label for="ans4" id="label4">Hyper Tool</label>
             </div>
           </div>
         </div>
-        <div class="next-btn">Next</div>
+        <div class="next-btn" onclick="clickNext()">Next</div>
       </div>
     </main>
 
