@@ -3,3 +3,4 @@ function displayName() {
     sessionStorage.setItem('userName', userName);
     window.location.href = 'quiz.html';
 }
+
