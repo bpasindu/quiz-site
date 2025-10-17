@@ -64,16 +64,11 @@ let score = 0;
 let countdown;
 const timer = document.getElementById("timer");
 
-// Add click event listeners to answer options
+//Add click event listeners to answer options
 document.querySelectorAll(".answer-option").forEach((option) => {
   option.addEventListener("click", function () {
     const radio = this.querySelector('input[type="radio"]');
     radio.checked = true;
-
-    // Remove selected class from all options
-    document.querySelectorAll(".answer-option").forEach((opt) => {
-      opt.classList.remove("selected");
-    });
 
     // Add selected class to clicked option
     this.classList.add("selected");
@@ -81,15 +76,12 @@ document.querySelectorAll(".answer-option").forEach((option) => {
 });
 
 function startTime() {
-  // Clear any existing timer
   if (countdown) {
     clearInterval(countdown);
   }
 
   let timeLeft = 20;
-  timer.classList.remove("warning");
 
-  // Update timer display immediately
   let seconds = timeLeft % 60;
   timer.textContent = "00:" + (seconds < 10 ? "0" + seconds : seconds);
 
@@ -98,26 +90,18 @@ function startTime() {
     let seconds = timeLeft % 60;
     timer.textContent = "00:" + (seconds < 10 ? "0" + seconds : seconds);
 
-    // Add warning class when 5 seconds or less
-    if (timeLeft <= 5 && timeLeft > 0) {
-      timer.classList.add("warning");
-    }
-
     if (timeLeft < 0) {
       clearInterval(countdown);
       timer.textContent = "00:00";
-      // Auto move to next question when time runs out
       autoMoveNext();
     }
   }, 1000);
 }
 
 function autoMoveNext() {
-  console.log("Time's up! Moving to next question. Current score: " + score);
   questionNumber++;
 
   if (questionNumber < questionarr.length) {
-    // Clear selection
     const selectedRadio = document.querySelector(
       'input[name="question"]:checked'
     );
@@ -144,8 +128,6 @@ function addQuestions() {
     document.getElementById("label" + (i + 1)).innerHTML =
       questionarr[questionNumber].answers[i].text;
   }
-
-  // Start fresh timer for the new question
   startTime();
 }
 
@@ -155,7 +137,7 @@ function clickNext() {
   );
 
   if (!selectedRadio) {
-    alert("Please select an answer before proceeding!");
+    alert("Please select an answer!");
     return;
   }
 
@@ -163,15 +145,11 @@ function clickNext() {
 
   if (questionarr[questionNumber].answers[selectedValue].correct === true) {
     score++;
-    console.log("Correct! Current score: " + score);
-  } else {
-    console.log("Wrong answer. Current score: " + score);
-  }
+  } 
 
   questionNumber++;
 
   if (questionNumber < questionarr.length) {
-    // Clear the current timer before moving to next question
     clearInterval(countdown);
 
     selectedRadio.checked = false;
@@ -180,14 +158,12 @@ function clickNext() {
     });
     addQuestions();
   } else {
-    // Clear timer when quiz is complete
     clearInterval(countdown);
     showScore();
   }
 }
 
 function showScore() {
-  // Clear and hide timer
   clearInterval(countdown);
   timer.style.display = "none";
 
@@ -195,36 +171,27 @@ function showScore() {
   document.getElementById("question-i").innerHTML =
     "You scored " + score + " out of " + questionarr.length + "!";
 
-  // Hide answer options
   document.getElementById("answer-buttons").style.display = "none";
 
-  // Change Next button to Play Again
   const nextBtn = document.querySelector(".next-btn");
   nextBtn.innerHTML = "Play Again";
 
-  // Remove old event listener and add new one for restart
   nextBtn.onclick = restartQuiz;
 }
 
 function restartQuiz() {
-  // Reset variables
   questionNumber = 0;
   score = 0;
 
-  // Show timer again
   timer.style.display = "block";
 
-  // Show answer options again
   document.getElementById("answer-buttons").style.display = "flex";
 
-  // Change button back to Next
   const nextBtn = document.querySelector(".next-btn");
   nextBtn.innerHTML = "Next";
   nextBtn.onclick = clickNext;
 
-  // Load first question
   addQuestions();
 }
 
-// Initialize quiz on page load
 addQuestions();
